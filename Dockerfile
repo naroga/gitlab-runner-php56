@@ -22,7 +22,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN pear install PHP_CodeSniffer
 
 #Fetches a sample php.ini file with most configurations already good-to-go.
-RUN wget https://raw.githubusercontent.com/naroga/docker-php56/master/php.ini
+RUN wget https://raw.githubusercontent.com/naroga/gitlab-runner-php56/master/php.ini
 RUN rm -r /etc/php5/cli/php.ini
 RUN rm -r /etc/php5/apache2/php.ini
 RUN cp php.ini /etc/php5/cli/php.ini 
