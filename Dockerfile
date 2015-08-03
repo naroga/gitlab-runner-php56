@@ -1,7 +1,7 @@
 FROM gitlab/gitlab-runner
 MAINTAINER Pedro Cordeiro <pedro@naroga.com.br>
 
-#Adds PHP 5.6 repository.
+#Adds odrej/PHP 5.6 repository.
 RUN echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" > /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
 RUN echo "deb-src http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" >> /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
 RUN wget https://raw.githubusercontent.com/naroga/gitlab-runner-php56/master/pgp-key
@@ -39,6 +39,8 @@ RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-s
 RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 RUN apt-get install -y mysql-server
 
+RUN apt-get upgrade -y
+
 #Tests build
 RUN php -v
 RUN phpunit --version
@@ -46,3 +48,4 @@ RUN composer --version
 RUN phpcs --version
 RUN php -i | grep timezone
 RUN php -r "echo json_encode(get_loaded_extensions());"
+
