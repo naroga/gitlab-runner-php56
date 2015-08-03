@@ -4,6 +4,8 @@ MAINTAINER Pedro Cordeiro <pedro@naroga.com.br>
 #Adds PHP 5.6 repository.
 RUN echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" > /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
 RUN echo "deb-src http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" >> /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
+RUN wget https://raw.githubusercontent.com/naroga/gitlab-runner-php56/master/pgp-key
+RUN apt-key add pgp-key
 
 #Updates apt repository
 RUN apt-get update -y
